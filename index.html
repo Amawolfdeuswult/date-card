@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#f48bb4">
+<title>Will you go out with me? 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;min-height:100%;overflow:hidden}
+body{min-height:100svh;background:#f58bb4;color:#5a1740;font-family:'Press Start 2P',monospace;image-rendering:pixelated}
+button{font:inherit;border:0;cursor:pointer;touch-action:manipulation}
+.scene{position:fixed;inset:0;overflow:hidden;background:linear-gradient(#f28ab3,#f7b3ce 60%,#ef9dbf)}
+.sky{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 25%,rgba(255,255,255,.34),transparent 48%)}
+.cloud{position:absolute;width:170px;height:46px;background:#fff7fb;box-shadow:0 7px #e9b7ce;opacity:.72;clip-path:polygon(0 62%,12% 62%,12% 39%,25% 39%,25% 15%,42% 15%,42% 0,62% 0,62% 16%,78% 16%,78% 35%,91% 35%,91% 57%,100% 57%,100% 100%,0 100%)}
+.c1{top:7%;left:-190px;animation:cloud 32s linear infinite}.c2{top:25%;right:-220px;transform:scale(.75);animation:cloud2 40s linear infinite}
+@keyframes cloud{to{transform:translateX(calc(100vw + 460px))}}@keyframes cloud2{to{transform:translateX(calc(-100vw - 460px)) scale(.75)}}
+.star{position:absolute;color:#fff;opacity:.8;font-size:18px;animation:twinkle 2.4s ease-in-out infinite}.s1{left:9%;top:15%}.s2{left:78%;top:12%;animation-delay:.8s}.s3{left:18%;top:39%;animation-delay:1.2s}.s4{right:9%;top:37%;animation-delay:.3s}
+@keyframes twinkle{50%{opacity:.15;transform:scale(.65)}}
+.heart{position:absolute;color:#fff;font-size:18px;opacity:.45;animation:float 6s ease-in-out infinite}.h1{left:7%;top:54%}.h2{right:8%;top:48%;animation-delay:2s}.h3{left:83%;top:67%;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(12px)}50%{transform:translateY(-22px)}}
+.city{position:absolute;left:0;right:0;bottom:19%;height:19%;opacity:.42;background:linear-gradient(90deg,transparent 0 2%,#bd4e80 2% 7%,transparent 7% 9%,#c95a88 9% 15%,transparent 15% 17%,#ae4678 17% 24%,transparent 24% 27%,#c85a87 27% 33%,transparent 33% 36%,#b34b7c 36% 44%,transparent 44% 47%,#c75b88 47% 54%,transparent 54% 58%,#ae4678 58% 65%,transparent 65% 68%,#c95a88 68% 76%,transparent 76% 79%,#b14979 79% 86%,transparent 86% 90%,#c45a87 90% 97%,transparent 97%);clip-path:polygon(0 100%,0 42%,4% 42%,4% 26%,9% 26%,9% 53%,14% 53%,14% 14%,20% 14%,20% 48%,25% 48%,25% 5%,31% 5%,31% 39%,37% 39%,37% 20%,42% 20%,42% 48%,48% 48%,48% 0,54% 0,54% 38%,61% 38%,61% 16%,67% 16%,67% 47%,73% 47%,73% 7%,79% 7%,79% 42%,86% 42%,86% 18%,92% 18%,92% 44%,97% 44%,97% 9%,100% 9%,100% 100%)}
+.ground{position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(#d84b87 0 7%,#b83270 7% 10%,#e6538d 10%);z-index:3}.ground:before{content:"";position:absolute;left:0;right:0;top:0;height:9px;background:repeating-linear-gradient(90deg,#fff0f7 0 4px,transparent 4px 18px);opacity:.55}
+.flower{position:absolute;bottom:16%;z-index:4;color:#fff;font-size:22px;animation:sway 2.8s ease-in-out infinite}.f1{left:4%}.f2{left:16%;font-size:15px}.f3{right:12%;font-size:24px;animation-delay:1s}.f4{right:3%;font-size:16px}
+@keyframes sway{50%{transform:translateX(3px) rotate(4deg)}}
+.app{position:relative;z-index:10;width:100%;height:100svh;display:flex;align-items:center;justify-content:center;padding:8px}
+.panel{width:min(760px,100%);max-height:calc(100svh - 16px);display:flex;flex-direction:column;align-items:center;text-align:center;padding:10px 8px}
+.screen{display:none;width:100%;animation:in .35s ease}.screen.active{display:block}@keyframes in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.mascot{width:clamp(120px,32vw,180px);aspect-ratio:1;background:#ffffff;border:5px solid #ffeff7;outline:4px solid #9e225b;box-shadow:0 5px #7d1b4a,inset 0 0 0 3px #4a2440;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:4px auto 18px;position:relative;animation:bob 2.5s ease-in-out infinite}.mascot:before{content:"";position:absolute;inset:7px;border:2px solid #e25a91}.mascot img{width:95%;height:95%;object-fit:contain;image-rendering:pixelated}
+@keyframes bob{50%{transform:translateY(-7px)}}
+.title{color:#fff;text-shadow:4px 4px #a92360;font-size:clamp(23px,7vw,48px);line-height:1.4;margin:0}.subtitle{color:#fff;font-family:Arial,sans-serif;font-weight:700;font-size:clamp(13px,3.8vw,19px);margin:10px auto 14px;text-shadow:2px 2px rgba(126,25,74,.35)}
+.actions,.nav{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:12px;width:100%}
+.pixel-btn{min-height:52px;padding:11px 16px;background:#fff0f6;border:4px solid #8e1e54;box-shadow:0 5px #7a1747,inset 0 0 0 3px #ff8db8;font-size:clamp(11px,3.5vw,18px);text-transform:uppercase;transition:.12s}
+.pixel-btn.primary{background:#ed3c7c;color:#fff;border-color:#8c164d;box-shadow:0 5px #74123f,inset 0 0 0 3px #ff85b0}.pixel-btn:active{transform:translateY(4px);box-shadow:0 1px #74123f,inset 0 0 0 3px #ff85b0}
+.progress{width:min(440px,90%);height:8px;background:rgba(104,19,63,.3);margin:0 auto 16px;border:2px solid rgba(255,255,255,.55)}.progress span{display:block;height:100%;background:#fff;transition:.3s}
+.question{color:#fff;text-shadow:3px 3px #a92360;font-size:clamp(18px,5.6vw,32px);line-height:1.45;margin:0 0 16px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;width:min(600px,100%);margin:auto}.option{min-height:55px;padding:11px 8px;background:#fff0f6;border:3px solid #922056;box-shadow:0 4px #74173f;color:#7b1748;font-size:clamp(9px,3vw,14px);line-height:1.35}.option.selected{background:#ff75a7;color:#fff;transform:translateY(3px);box-shadow:0 1px #74173f}
+.note{font:700 12px Arial,sans-serif;color:#fff;margin:8px 0 0;opacity:.9}
+.summary{width:min(600px,100%);background:rgba(255,246,250,.94);border:4px solid #922056;box-shadow:0 6px #74173f;padding:8px;text-align:left;margin:auto}.summary p{margin:0;padding:10px;border-bottom:2px dashed #efb3ca;font:700 13px Arial,sans-serif;color:#702049}.summary p:last-child{border:0}
+#fx{position:fixed;inset:0;z-index:20;pointer-events:none}
+@media(max-width:360px){.mascot{width:76px;margin-bottom:10px}.title{font-size:20px}.subtitle{font-size:12px}.pixel-btn{min-height:47px;padding:9px 13px}.option{min-height:48px;font-size:8.5px}.question{font-size:17px}.city{bottom:18%;height:14%}.ground{height:19%}}
+@media(max-height:620px){.mascot{width:72px;margin-bottom:8px}.title{font-size:20px}.subtitle{margin:5px auto 8px}.question{margin-bottom:9px}.option{min-height:44px}.pixel-btn{min-height:44px}.nav,.actions{margin-top:8px}}
+
+/* Custom pixel calendar */
+.calendar-wrapper{
+  width:100%;
+  max-width:440px;
+  margin:0 auto 14px;
+  padding:12px;
+  background:rgba(255,246,250,.20);
+  border:3px solid #fff;
+  box-shadow:0 5px 0 rgba(116,23,63,.55);
+}
+.calendar-top{
+  display:grid;
+  grid-template-columns:44px 1fr 44px;
+  align-items:center;
+  gap:8px;
+  margin-bottom:12px;
+}
+.calendar-month{
+  color:#fff;
+  font-size:clamp(12px,3.5vw,17px);
+  line-height:1.3;
+  text-shadow:3px 3px #a92360;
+}
+.month-arrow{
+  width:44px;height:42px;
+  background:#fff0f6;
+  border:3px solid #922056;
+  box-shadow:0 3px 0 #74173f;
+  color:#7b1748;
+  font-size:16px;
+}
+.month-arrow:active{
+  transform:translateY(3px);
+  box-shadow:0 0 0 #74173f;
+}
+.weekdays,.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:5px;
+}
+.weekdays{
+  margin-bottom:7px;
+  color:#fff;
+  font-size:clamp(7px,2.3vw,10px);
+}
+.calendar-grid .empty{
+  aspect-ratio:1;
+}
+.day{
+  width:100%;
+  aspect-ratio:1;
+  padding:0;
+  background:#fff0f6;
+  border:2px solid #922056;
+  box-shadow:0 3px 0 #74173f;
+  color:#7b1748;
+  font-size:clamp(9px,2.9vw,13px);
+}
+.day:not(:disabled):active{
+  transform:translateY(3px);
+  box-shadow:0 0 0 #74173f;
+}
+.day.today{
+  outline:2px dashed #fff;
+  outline-offset:1px;
+}
+.day.selected{
+  background:#ff75a7;
+  color:#fff;
+  transform:translateY(3px);
+  box-shadow:0 0 0 #74173f;
+}
+.day:disabled{
+  opacity:.28;
+  cursor:not-allowed;
+  box-shadow:0 2px 0 rgba(116,23,63,.5);
+}
+.time-question{margin-top:15px}
+.time-box{
+  width:100%;
+  max-width:440px;
+  margin:0 auto;
+  padding:10px 14px 6px;
+}
+#selectedTime{
+  color:#fff;
+  font-size:clamp(20px,6vw,28px);
+  margin-bottom:10px;
+  text-shadow:3px 3px #a92360;
+}
+#timeSlider{
+  width:100%;
+  height:34px;
+  accent-color:#fff;
+}
+#timeSlider::-webkit-slider-runnable-track{
+  height:8px;
+  background:#fff0f6;
+  border:2px solid #922056;
+}
+#timeSlider::-webkit-slider-thumb{
+  appearance:none;
+  width:26px;height:26px;
+  margin-top:-11px;
+  background:#ff75a7;
+  border:3px solid #922056;
+  box-shadow:0 3px #74173f;
+}
+#timeSlider::-moz-range-track{
+  height:8px;
+  background:#fff0f6;
+  border:2px solid #922056;
+}
+#timeSlider::-moz-range-thumb{
+  width:24px;height:24px;
+  background:#ff75a7;
+  border:3px solid #922056;
+  box-shadow:0 3px #74173f;
+}
+.slider-labels{
+  display:flex;
+  justify-content:space-between;
+  color:#fff;
+  font-size:clamp(8px,2.4vw,11px);
+  margin-top:2px;
+}
+
+
+.card-carousel{display:flex;align-items:center;justify-content:center;gap:10px;margin:12px auto;width:100%;max-width:620px}
+.carousel-arrow{width:48px;height:56px;background:#fff0f6;border:3px solid #922056;box-shadow:0 4px #74173f;font:inherit}
+.activity-card{flex:1;max-width:320px;min-height:220px;background:rgba(255,240,246,.95);border:4px solid #922056;box-shadow:0 6px #74173f;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;animation:in .3s ease}
+.activity-emoji{font-size:56px;margin-bottom:12px}
+.activity-title{font-size:22px;color:#7b1748;margin-bottom:12px}
+.activity-desc{font:700 14px Arial,sans-serif;color:#7b1748;line-height:1.5}
+.dots{display:flex;justify-content:center;gap:8px;margin:16px 0}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4)}
+.dot.active{background:#fff}
+</style>
+</head>
+<body>
+<div class="scene"><div class="sky"></div><div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="star s1">✦</div><div class="star s2">✧</div><div class="star s3">✦</div><div class="star s4">✧</div>
+<div class="heart h1">♡</div><div class="heart h2">♥</div><div class="heart h3">♡</div><div class="city"></div>
+<div class="flower f1">✿</div><div class="flower f2">✦</div><div class="flower f3">✿</div><div class="flower f4">✦</div><div class="ground"></div></div>
+
+<main class="app"><div class="panel">
+<section class="screen active" id="s1"><div class="mascot"><img src="3.gif" alt="Cat"></div>
+<h1 class="title">WILL YOU GO<br>OUT WITH ME?</h1><p class="subtitle">I have one very important question for you Pop... </p>
+<div class="actions"><button class="pixel-btn primary" onclick="next(2)">YES ♥</button><button class="pixel-btn" id="no" onclick="nope()">NO</button></div></section>
+
+
+<section class="screen" id="s2">
+  <div class="progress"><span style="width:20%"></span></div>
+
+  <h2 class="question">CHOOSE A DATE 💗</h2>
+
+  <div class="calendar-wrapper">
+    <div class="calendar-top">
+      <button class="month-arrow" id="prevMonth" aria-label="Previous month">←</button>
+      <div class="calendar-month" id="calendarMonth"></div>
+      <button class="month-arrow" id="nextMonth" aria-label="Next month">→</button>
+    </div>
+
+    <div class="weekdays">
+      <span>MO</span><span>TU</span><span>WE</span>
+      <span>TH</span><span>FR</span><span>SA</span><span>SU</span>
+    </div>
+
+    <div class="calendar-grid" id="calendarGrid"></div>
+  </div>
+
+  <h2 class="question time-question">CHOOSE A TIME 🕒</h2>
+
+  <div class="time-box">
+    <div id="selectedTime">19:00</div>
+    <input id="timeSlider" type="range" min="12" max="22" step="1" value="19">
+    <div class="slider-labels"><span>12:00</span><span>22:00</span></div>
+  </div>
+
+  <div class="nav">
+    <button class="pixel-btn primary" onclick="next(3)">NEXT →</button>
+  </div>
+</section>
+
+
+
+
+<section class="screen" id="s3"><div class="progress"><span style="width:60%"></span></div>
+<h2 class="question">WHAT SHOULD WE DO?</h2>
+
+<div class="card-carousel">
+<button class="carousel-arrow" onclick="moveCard(-1)">←</button>
+
+<div class="activity-card">
+<div class="activity-emoji" id="activityEmoji">🍜</div>
+<div class="activity-title" id="activityTitle">DINNER</div>
+<div class="activity-desc" id="activityDesc">A cozy dinner together 💗</div>
+</div>
+
+<button class="carousel-arrow" onclick="moveCard(1)">→</button>
+</div>
+
+<div class="dots" id="dots"></div>
+
+<div class="nav">
+<button class="pixel-btn" onclick="next(2)">←</button>
+<button class="pixel-btn primary" onclick="next(4)">NEXT →</button>
+</div></section>
+
+
+
+
+<section class="screen" id="s4">
+<div class="progress"><span style="width:80%"></span></div>
+<h2 class="question">HOW SHOULD THIS DATE FEEL? 💗</h2>
+
+<div class="card-carousel">
+<button class="carousel-arrow" onclick="moveVibe(-1)">←</button>
+
+<div class="activity-card">
+<div class="activity-emoji" id="vibeEmoji">🌷</div>
+<div class="activity-title" id="vibeTitle">SWEET</div>
+<div class="activity-desc" id="vibeDesc">Cute moments, smiles and something beautiful 🌸</div>
+</div>
+
+<button class="carousel-arrow" onclick="moveVibe(1)">→</button>
+</div>
+
+<div class="dots" id="vibeDots"></div>
+
+<div class="nav">
+<button class="pixel-btn" onclick="next(3)">←</button>
+<button class="pixel-btn primary" onclick="finish()">CONFIRM ♥</button>
+</div>
+</section>
+
+
+
+<section class="screen" id="s5">
+<div class="mascot"><img src="2.gif" alt="Cat"></div>
+<h1 class="title">DATE CONFIRMED!</h1>
+<p class="subtitle">I can't wait to see you Pop 🥹💗</p>
+
+<div class="summary" id="summary">
+<p>📅 Your date will appear here</p>
+<p>🕒 Your time will appear here</p>
+<p>🍲 Your activity will appear here</p>
+<p>💗 Your vibe will appear here</p>
+</div>
+
+<div class="actions">
+<button class="pixel-btn primary" onclick="celebrate()">YAY! ♥</button>
+</div>
+</section>
+</div></main><canvas id="fx"></canvas>
+
+<script>
+const data={date:'',time:'',activities:[],vibe:''};let n=0;
+function next(i){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById('s'+i).classList.add('active');navigator.vibrate?.(10)}
+function pick(el,key){el.parentElement.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');data[key]=el.textContent.trim();navigator.vibrate?.(10)}
+function toggle(el){el.classList.toggle('selected');data.activities=[...document.querySelectorAll('#activities .selected')].map(x=>x.textContent.trim());navigator.vibrate?.(10)}
+function nope(){const b=document.getElementById('no');n++;b.style.transform=`translate(${Math.random()*130-65}px,${Math.random()*60-30}px)`;b.textContent=['NO','ARE YOU SURE?','REALLY?','THINK AGAIN 🥺','NOPE 😭'][Math.min(n,4)];if(n>5)b.style.opacity=.5}
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]) )}
+
+async function sendToTelegram(){
+  try{
+    const message=`💗 New date confirmed!
+
+📅 Date: ${data.date}
+🕐 Time: ${data.time}
+🍲 Activity: ${data.activities.join(' · ')}
+✨ Vibe: ${data.vibe}`;
+    await fetch('https://api.telegram.org/bot8601473686:AAEQ6feWgyYbRPuH3034-sr5Rw1VMgfxU2s/sendMessage',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        chat_id:'308821481',
+        text:message
+      })
+    });
+  }catch(e){
+    console.log('Telegram error',e);
+  }
+}
+
+async function finish(){data.date=data.date||'WE WILL DECIDE';data.time=data.time||'WHENEVER YOU WANT';data.activities=data.activities.length?data.activities:['SURPRISE ME'];data.vibe=data.vibe||'A LITTLE BIT OF EVERYTHING';document.getElementById('summary').innerHTML='<p>📅 '+esc(data.date)+'</p><p>🕐 '+esc(data.time)+'</p><p>💗 '+esc(data.activities.join(' · '))+'</p><p>✨ '+esc(data.vibe)+'</p>';await sendToTelegram();next(5);celebrate()}
+function celebrate(){const c=document.getElementById('fx'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const a=Array.from({length:80},()=>({x:c.width/2,y:c.height*.42,vx:(Math.random()-.5)*8,vy:-Math.random()*9-2,s:12+Math.random()*18,r:Math.random()*6})),start=performance.now(),chars=['♥','♡','✦','✿'];function f(t){x.clearRect(0,0,c.width,c.height);a.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.16;p.r+=.08;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle='rgba(255,255,255,.9)';x.font=p.s+'px serif';x.fillText(chars[Math.random()*chars.length|0],0,0);x.restore()});if(t-start<3500)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height)}requestAnimationFrame(f)}
+addEventListener('resize',()=>{const c=document.getElementById('fx');c.width=innerWidth;c.height=innerHeight});
+
+/* Dynamic calendar + time slider */
+const today = new Date();
+today.setHours(0,0,0,0);
+let calendarCursor = new Date(today.getFullYear(), today.getMonth(), 1);
+
+const monthNames = [
+  'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+  'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'
+];
+
+const calendarMonth = document.getElementById('calendarMonth');
+const calendarGrid = document.getElementById('calendarGrid');
+
+function sameDay(a,b){
+  return a.getFullYear()===b.getFullYear() &&
+         a.getMonth()===b.getMonth() &&
+         a.getDate()===b.getDate();
+}
+
+function renderCalendar(){
+  const y = calendarCursor.getFullYear();
+  const m = calendarCursor.getMonth();
+
+  calendarMonth.textContent = monthNames[m] + ' ' + y;
+
+  const first = new Date(y,m,1);
+  const daysInMonth = new Date(y,m+1,0).getDate();
+
+  // Convert JS Sunday=0 to Monday-first index.
+  const offset = (first.getDay()+6)%7;
+
+  calendarGrid.innerHTML = '';
+
+  for(let i=0;i<offset;i++){
+    const empty=document.createElement('div');
+    empty.className='empty';
+    calendarGrid.appendChild(empty);
+  }
+
+  for(let d=1;d<=daysInMonth;d++){
+    const date=new Date(y,m,d);
+    const btn=document.createElement('button');
+    btn.className='day';
+    btn.textContent=d;
+
+    if(sameDay(date,today)) btn.classList.add('today');
+
+    if(date < today){
+      btn.disabled=true;
+    }else{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.day.selected')
+          .forEach(x=>x.classList.remove('selected'));
+
+        btn.classList.add('selected');
+
+        data.date = date.toLocaleDateString('en-GB',{
+          day:'2-digit',
+          month:'long',
+          year:'numeric'
+        });
+
+        navigator.vibrate?.(10);
+      });
+    }
+
+    if(data.date && date.toLocaleDateString('en-GB',{
+      day:'2-digit',month:'long',year:'numeric'
+    })===data.date){
+      btn.classList.add('selected');
+    }
+
+    calendarGrid.appendChild(btn);
+  }
+
+  // Never allow navigating before the current month.
+  document.getElementById('prevMonth').disabled =
+    y===today.getFullYear() && m===today.getMonth();
+
+  document.getElementById('prevMonth').style.opacity =
+    document.getElementById('prevMonth').disabled ? '.35' : '1';
+}
+
+document.getElementById('prevMonth').addEventListener('click',()=>{
+  if(calendarCursor.getFullYear()===today.getFullYear() &&
+     calendarCursor.getMonth()===today.getMonth()) return;
+
+  calendarCursor.setMonth(calendarCursor.getMonth()-1);
+  renderCalendar();
+});
+
+document.getElementById('nextMonth').addEventListener('click',()=>{
+  calendarCursor.setMonth(calendarCursor.getMonth()+1);
+  renderCalendar();
+});
+
+const slider=document.getElementById('timeSlider');
+const selectedTime=document.getElementById('selectedTime');
+
+function updateTime(){
+  const hour=String(slider.value).padStart(2,'0');
+  selectedTime.textContent=hour+':00';
+  data.time=hour+':00';
+}
+slider.addEventListener('input',updateTime);
+updateTime();
+renderCalendar();
+
+
+const activitiesCarousel=[
+{e:'🍲',t:'HOTPOT',d:'A cozy dinner together 💗'},
+{e:'🥩',t:'BBQ',d:'Another cozy dinner together 💗'},
+{e:'🌳',t:'PARK WALK',d:'A quiet walk and fresh air 🌿'},
+{e:'🦖',t:'JURASSIC WORLD MOVIE NIGHT',d:'Dinosaurs, popcorn and an unforgettable evening 🍿'},
+{e:'🏎️',t:'KART RACING',d:'Let\'s find out who the better driver is 🏁'},
+{e:'🎨',t:'PAINTBAR',d:'Paint and a little bit of creativity 🎨'},
+{e:'🎁',t:'SURPRISE',d:'Let me surprise you 🥹'}
+];
+let activityIndex=0;
+
+function renderActivity(){
+const a=activitiesCarousel[activityIndex];
+document.getElementById('activityEmoji').textContent=a.e;
+document.getElementById('activityTitle').textContent=a.t;
+document.getElementById('activityDesc').textContent=a.d;
+data.activities=[a.t];
+const dots=document.getElementById('dots');
+dots.innerHTML='';
+activitiesCarousel.forEach((_,i)=>{
+const d=document.createElement('div');
+d.className='dot'+(i===activityIndex?' active':'');
+dots.appendChild(d);
+});
+}
+function moveCard(dir){
+activityIndex=(activityIndex+dir+activitiesCarousel.length)%activitiesCarousel.length;
+renderActivity();
+}
+renderActivity();
+
+const vibeCarousel=[
+{e:'🌷',t:'SWEET',d:'Cute moments, smiles and something beautiful 🌸'},
+{e:'🌙',t:'COZY',d:'A warm and comfortable evening together ✨'},
+{e:'✨',t:'SPONTANEOUS',d:'No plans. Just enjoying the moment 🌟'}
+];
+let vibeIndex=0;
+function renderVibe(){
+ const v=vibeCarousel[vibeIndex];
+ document.getElementById('vibeEmoji').textContent=v.e;
+ document.getElementById('vibeTitle').textContent=v.t;
+ document.getElementById('vibeDesc').textContent=v.d;
+ data.vibe=v.t;
+ const dots=document.getElementById('vibeDots');
+ dots.innerHTML='';
+ vibeCarousel.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===vibeIndex?' active':'');dots.appendChild(d);});
+}
+function moveVibe(dir){vibeIndex=(vibeIndex+dir+vibeCarousel.length)%vibeCarousel.length;renderVibe();}
+renderVibe();
+</script>
+</body></html>
